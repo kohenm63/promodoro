@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "Pomodoro Timer",
+    "version": "1.0",
+    "description": "A simple promodoro timer with youtube video on the background.",
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_icon": {
+            "16": "images/icon16.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png"
+        },
+        "default_title": "Pomodoro Timer",
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "host_permissions": [
+        "https://www.youtube.com/*"
+    ],
+   "content_scripts": [{
+       "matches": ["https://www.youtube.com/*"],
+       "js": ["content.js"],
+       "run_at": "document_idle"
+   }]
+
+}
