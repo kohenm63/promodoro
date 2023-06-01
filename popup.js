@@ -4,14 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const pauseButton = document.getElementById("pause-button");
     const resumeButton = document.getElementById("resume-button");
     const timerText = document.getElementById("timer-text");
-    const urlInput = document.getElementById("url-input");
+    // const urlInput = document.getElementById("url-input");
 
     let isRunning = false;
     let isPaused = false;
     let minutes = 25; // Default work duration in minutes
     let secondsRemaining = 0;
     let countdownIntervalId = null;
-    let musicUrl = "";
+    // let musicUrl = "";
 
     function updateTimerDisplay() {
         const displayMinutes = Math.floor(secondsRemaining / 60);
@@ -127,5 +127,17 @@ document.addEventListener("DOMContentLoaded", () => {
    });
 
 
-    urlInput.addEventListener("input", handleUrlInput);
+    // urlInput.addEventListener("input", handleUrlInput);
+    
+    const hideButton = document.getElementById("hide-button");
+
+    hideButton.addEventListener("click", () => {
+        chrome.windows.getCurrent((window) => {
+            chrome.windows.update(window.id, {
+                state: "minimized"
+            });
+        });
+    });
+
 });
+
